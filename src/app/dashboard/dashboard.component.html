@@ -1,0 +1,10 @@
+<h3>Dash Planets</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let planet of planets" class="col-1-4">
+    <a routerLink="/detail/{{planet.id}}">
+    <div class="module planet">
+      <h4>{{planet.name}}</h4>
+    </div>
+  </a>
+  </a>
+</div>

@@ -1,10 +1,8 @@
 <h2>My Planets</h2>
 <ul class="planets">
   <li *ngFor="let planet of planets"
-    [class.selected]="planet === selectedPlanet"
-    (click)="onSelect(planet)">
+    [class.selected]="planet === selectedPlanet" <a *ngFor="let hero of heroes" class="col-1-4"
+    routerLink="/detail/{{hero.id}}">>
     <span class="badge">{{planet.id}}</span> {{planet.name}}
   </li>
 </ul>
-
-<app-planet-detail [planet]="selectedPlanet"></app-planet-detail>

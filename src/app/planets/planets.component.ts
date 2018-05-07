@@ -22,7 +22,4 @@ export class PlanetsComponent implements OnInit {
                     .subscribe(planets =>
                     this.planets = planets);
   }
-   onSelect(planet: Planet): void {
-      this.selectedPlanet = planet;
-   }
 }

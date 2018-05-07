@@ -7,13 +7,15 @@ import { PlanetsComponent } from './planets/planets.component';
 import { PlanetDetailComponent } from './planet-detail/planet-detail.component';
 import { CommunicationComponent } from './communication/communication.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PlanetsComponent,
     PlanetDetailComponent,
-    CommunicationComponent
+    CommunicationComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
