@@ -6,15 +6,5 @@
     <span class="badge">{{planet.id}}</span> {{planet.name}}
   </li>
 </ul>
- 
-<div *ngIf="selectedPlanet">
- 
-  <h2>{{ selectedPlanet.name | uppercase }} Details</h2>
-  <div><span>id: </span>{{selectedPlanet.id}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="selectedPlanet.name" placeholder="name">
-    </label>
-  </div>
- 
-</div>
+
+<app-planet-detail [planet]="selectedPlanet"></app-planet-detail>

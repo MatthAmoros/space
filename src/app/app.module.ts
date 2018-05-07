@@ -4,15 +4,21 @@ import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 
 import { AppComponent } from './app.component';
 import { PlanetsComponent } from './planets/planets.component';
+import { PlanetDetailComponent } from './planet-detail/planet-detail.component';
+import { CommunicationComponent } from './communication/communication.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PlanetsComponent
+    PlanetsComponent,
+    PlanetDetailComponent,
+    CommunicationComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

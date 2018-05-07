@@ -1,0 +1,13 @@
+ 
+ <!-- If selected planet is not null -->
+<div *ngIf="planet">
+ 
+  <h2>{{ planet.name | uppercase }} Details</h2>
+  <div><span>id: </span>{{planet.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="planet.name" placeholder="name">
+    </label>
+  </div>
+ 
+</div>
