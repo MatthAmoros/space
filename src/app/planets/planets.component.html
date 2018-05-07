@@ -1,0 +1,20 @@
+<h2>My Planets</h2>
+<ul class="planets">
+  <li *ngFor="let planet of planets"
+    [class.selected]="planet === selectedPlanet"
+    (click)="onSelect(planet)">
+    <span class="badge">{{planet.id}}</span> {{planet.name}}
+  </li>
+</ul>
+ 
+<div *ngIf="selectedPlanet">
+ 
+  <h2>{{ selectedPlanet.name | uppercase }} Details</h2>
+  <div><span>id: </span>{{selectedPlanet.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="selectedPlanet.name" placeholder="name">
+    </label>
+  </div>
+ 
+</div>
