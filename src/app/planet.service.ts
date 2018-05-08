@@ -15,4 +15,10 @@ export class PlanetService {
     this.communicationService.add("Discovered new planets !");
     return of(PLANETS);
   }
+
+  getPlanet(id: number): Observable<Planet> {
+    // TODO: send the message _after_ fetching the Planet
+    this.communicationService.add(`Getting planet information...`);
+    return of(PLANETS.find(planet => planet.id === id));
+  }
 }
