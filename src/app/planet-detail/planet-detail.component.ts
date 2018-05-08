@@ -29,4 +29,9 @@ export class PlanetDetailComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+
+  save(): void {
+    this.planetService.updatePlanet(this.planet)
+     .subscribe(() => this.goBack());
+  }
 }
