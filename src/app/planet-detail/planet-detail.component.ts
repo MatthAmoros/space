@@ -25,4 +25,8 @@ export class PlanetDetailComponent implements OnInit {
     this.planetService.getPlanet(id)
       .subscribe(planet => this.planet = planet);
   }
+
+  goBack(): void {
+    this.location.back();
+  }
 }
