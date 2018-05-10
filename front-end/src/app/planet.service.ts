@@ -10,7 +10,7 @@ import { CommunicationService } from './communication.service';
   providedIn: 'root'
 })
 export class PlanetService {
-  private planetsUri = 'api/planets';  // URL to web api
+  private planetsUri = 'localhost:8081/planets';  // URL to web api
   private _planets: Planet[];
 
   constructor(

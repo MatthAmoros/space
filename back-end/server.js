@@ -1,11 +1,13 @@
 var express = require('express');
-var session = require('express-session');
+var router = require('./router');
 var fs = require("fs");
+
 var app = express();
 
 app.use(express.json());       // to support JSON-encoded bodies
 app.use(express.urlencoded()); // to support URL-encoded bodies
 app.use(express.static('./www')); // set PWD
+app.use('/api', router);
 
 // Responds to root GET calls
 app.get('/', function (req, res) {
