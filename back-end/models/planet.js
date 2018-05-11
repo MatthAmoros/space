@@ -10,7 +10,8 @@ var PlanetSchema   = new Schema({
     location_x: Number,
     location_y: Number,
     type: [{ type: Schema.Types.ObjectId, ref: 'PlanetType' }],
-    name: String
+    name: String,
+    owner: [{ type: Schema.Types.ObjectId, ref: 'User' }]
 });
 
 module.exports = mongoose.model('Planet', PlanetSchema);

@@ -14,6 +14,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { DrawingsurfaceComponent } from './drawingsurface/drawingsurface.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { PlanetViewComponent } from './planet-view/planet-view.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NavigationComponent } from './navigation/navigation.component';
     DashboardComponent,
     LoginComponent,
     DrawingsurfaceComponent,
-    NavigationComponent
+    NavigationComponent,
+    PlanetViewComponent
   ],
   imports: [
     HttpClientModule,

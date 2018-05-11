@@ -6,5 +6,19 @@
       <input [(ngModel)]="planet.name" placeholder="name">
     </label>
   </div>
- <button (click)="goBack()">Go Back</button> <button (click)="save()">Save</button>
+  <div *ngIf="claimed != true">
+    <button (click)="claim()">Claim</button>
+  </div>
+  <div *ngIf="claimed == true">
+  <div *ngIf="ownedByUser == true">
+    <button (click)="build()">Build</button>
+    <button (click)="view()">View</button>
+    <button (click)="unclaim()">Unclaim</button>
+  </div>
+  <div *ngIf="ownedByUser == false">
+    <button (click)="attack()">Attack</button>
+    <button (click)="spy()">Spy</button>
+  </div>
+  </div>
+ <button (click)="goBack()">Go Back</button>
 </div>

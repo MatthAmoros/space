@@ -12,9 +12,15 @@ import { Location } from '@angular/common';
 })
 export class PlanetDetailComponent implements OnInit {
   @Input() planet: Planet;
+  claimed: boolean;
+  ownedByUser: boolean;
+
   constructor(private route: ActivatedRoute,
   private planetService: PlanetService,
-  private location: Location) { }
+  private location: Location) {
+    this.claimed = true;
+    this.ownedByUser = false;
+  }
 
   ngOnInit() {
     this.getPlanet();
