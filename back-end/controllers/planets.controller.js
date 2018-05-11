@@ -12,7 +12,7 @@ class PlanetsController {
 
     let location_x = opt(options, 'location_x', 0);
     let location_y = opt(options, 'location_y', 0);
-    let owner = opt(options, 'owner', '0');
+    let owner = opt(options, 'owner', mongoose.Types.ObjectId('424242424242424242424242'));
 
     let planet = new Planet({
       _id: new mongoose.Types.ObjectId(),
@@ -85,9 +85,9 @@ class PlanetsController {
       if(res != undefined) {
           if (err) return res.status(500).send(err)
 
-          console.log(planet.owner);
+          console.log(planet.owner[0]);
 
-          if(planet.owner.count > )
+          if(planet.owner.length <= 1 && planet.owner[0] ==  '424242424242424242424242')
             planet.owner = userId;
           else {
             return res.status(500).send('Already claimed');
