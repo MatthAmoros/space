@@ -28,6 +28,7 @@ class UsersController {
                tokenProvider: provider
              });
 
+             //Save new user
              user.save().then(function() {
                console.log('User ' + user.name + ' saved.');
                if(res != undefined)

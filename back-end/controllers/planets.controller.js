@@ -87,7 +87,7 @@ class PlanetsController {
 
           console.log(planet.owner);
 
-          if(!planet.owner)
+          if(planet.owner.count > )
             planet.owner = userId;
           else {
             return res.status(500).send('Already claimed');
