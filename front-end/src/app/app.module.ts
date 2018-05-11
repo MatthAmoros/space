@@ -11,6 +11,9 @@ import { PlanetDetailComponent } from './planet-detail/planet-detail.component';
 import { CommunicationComponent } from './communication/communication.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
+import { DrawingsurfaceComponent } from './drawingsurface/drawingsurface.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -18,16 +21,20 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     PlanetsComponent,
     PlanetDetailComponent,
     CommunicationComponent,
-    DashboardComponent
+    DashboardComponent,
+    LoginComponent,
+    DrawingsurfaceComponent,
+    NavigationComponent
   ],
   imports: [
     HttpClientModule,
+    /*
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
-    ),
+    ),*/
     BrowserModule,
     FormsModule,
     AppRoutingModule

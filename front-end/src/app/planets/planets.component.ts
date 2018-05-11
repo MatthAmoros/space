@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Planet } from '../planet';
+import { Planet } from '../libs/planet';
 import { PlanetService } from '../planet.service';
 
 @Component({

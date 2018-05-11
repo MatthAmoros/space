@@ -5,12 +5,9 @@ var Schema       = mongoose.Schema;
   Documentation at : http://mongoosejs.com/docs/populate.html
 */
 
-var PlanetSchema   = new Schema({
+var PlanetTypeSchema   = new Schema({
     _id: Schema.Types.ObjectId, //ID Type supported by MongoDb
-    location_x: Number,
-    location_y: Number,
-    type: [{ type: Schema.Types.ObjectId, ref: 'PlanetType' }],
     name: String
 });
 
-module.exports = mongoose.model('Planet', PlanetSchema);
+module.exports = mongoose.model('PlanetType', PlanetTypeSchema);

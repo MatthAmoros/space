@@ -17,10 +17,10 @@ router.use(function(req, res, next) {
     next(); //forwarding
 });
 
-router.route('/planets/:id')
+router.route('/planets/:name')
     // get planets
     .get(function(req, res) {
-      res.json({ message: 'Getting planet ' + req.params.id });
+
     })
     // update planets
     .put(function(req, res) {
@@ -28,20 +28,19 @@ router.route('/planets/:id')
     })
     // create planets
     .post(function(req, res) {
-
+      console.log('Creating planet ' + req.params.name);
+      planetsController.createPlanet(res, req.params.name);
     });
 
 router.route('/planets')
     // get planets
     .get(function(req, res) {
-      res.json({ message: 'Getting planets '});
+      planetsController.getPlanets(res);
     })
     // create planets
     .post(function(req, res) {
-      console.log('Creating planet...');
-      planetsController.createPlanet('test');
-    });
 
+    });
 
 router.route('/actions/:type/:param_1')
     // get planets

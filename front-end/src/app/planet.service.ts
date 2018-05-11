@@ -3,14 +3,14 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { Planet } from './planet';
+import { Planet } from './libs/planet';
 import { CommunicationService } from './communication.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlanetService {
-  private planetsUri = 'localhost:8081/planets';  // URL to web api
+  private planetsUri = 'http://localhost:8081/api/planets';  // URL to web api
   private _planets: Planet[];
 
   constructor(
@@ -26,10 +26,10 @@ export class PlanetService {
     );
   }
 
-  public getPlanet(id: number): Observable<Planet> {
+  public getPlanet(id: String): Observable<Planet> {
     // TODO: send the message _after_ fetching the Planet
     this.communicationService.add(`Getting planet information...`);
-    return of(this._planets.find(planet => planet.id === id));
+    return of(this._planets.find(planet => planet._id === id));
   }
 
   public updatePlanet (planet: Planet): Observable<any> {

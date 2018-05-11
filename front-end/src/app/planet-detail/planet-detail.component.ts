@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Planet } from '../planet';
+import { Planet } from '../libs/planet';
 import { PlanetService } from '../planet.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -21,7 +21,7 @@ export class PlanetDetailComponent implements OnInit {
   }
 
   getPlanet(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
     this.planetService.getPlanet(id)
       .subscribe(planet => this.planet = planet);
   }

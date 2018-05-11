@@ -1,4 +1,4 @@
 export class Planet {
-  id: number;
+  _id: string;
   name: string;
 }

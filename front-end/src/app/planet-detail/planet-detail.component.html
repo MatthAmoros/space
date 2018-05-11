@@ -1,6 +1,6 @@
 <div *ngIf="planet">
   <h2>{{ planet.name | uppercase }} Details</h2>
-  <div><span>id: </span>{{planet.id}}</div>
+  <div><span>id: </span>{{planet._id}}</div>
   <div>
     <label>name:
       <input [(ngModel)]="planet.name" placeholder="name">
