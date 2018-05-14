@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Planet } from '../libs/planet';
-import { PlanetService } from '../planet.service';
+import { Planet } from '../../models/planet';
+import { PlanetService } from '../../services/planet.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 

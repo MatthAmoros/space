@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { Planet } from './libs/planet';
+import { Planet } from '../models/planet';
 import { CommunicationService } from './communication.service';
 
 @Injectable({

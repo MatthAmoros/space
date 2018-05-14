@@ -1,11 +1,12 @@
 <div *ngIf="planet">
-  <h2>{{ planet.name | uppercase }} Details</h2>
+  <div><span>Location: </span>{{planet.location.x}} : {{planet.location.y}}</div>
+  <div class="h2"> Information <br/> </div>
   <div><span>id: </span>{{planet._id}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="planet.name" placeholder="name">
-    </label>
-  </div>
+  <div><span>Name </span>{{planet.name}}</div>
+  <div class="h4"> Stats <br/> </div>
+  <div><span>Space: </span>{{planet.stats.space}}</div>
+  <div><span>Energy: </span>{{planet.stats.energy}}</div>
+  <div><span>Defense: </span>{{planet.stats.defense}}</div>
   <div *ngIf="claimed != true">
     <button (click)="claim()">Claim</button>
   </div>
