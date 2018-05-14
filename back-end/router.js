@@ -72,6 +72,12 @@ router.route('/planets/:id')
 
     });
 
+router.route('/planets/location/:x/:y')
+    // get planets
+    .get(function(req, res) {
+      planetsController.getPlanetByLocation(res, parseInt(req.params.x), parseInt(req.params.y));
+    })
+
 router.route('/planets/:id/owner/:userId')
     // get planets
     .get(function(req, res) {
@@ -114,7 +120,7 @@ router.route('/planets/:id/structures/:structureType')
     // create planets
     .post(function(req, res) {
       planetsController.buildStructure(res, req.params.id, req.params.structureType);
-    });          
+    });
 
 router.route('/planets')
     // get planets
