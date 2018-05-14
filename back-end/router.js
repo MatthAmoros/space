@@ -4,12 +4,14 @@ var TaskFactory = require('./libs/task.factory');
 //Planet
 var PlanetsController = require('./controllers/planets.controller');
 var UsersController = require('./controllers/users.controller');
+var Database = require('./libs/database.service');
 var User = require('./models/user');
 var Planet = require('./models/planet');
 
 var taskFactory = new TaskFactory();
-var planetsController = new PlanetsController();
-var usersController = new UsersController();
+var db = new Database();
+var planetsController = new PlanetsController(db);
+var usersController = new UsersController(db);
 
 var router = express.Router();
 
@@ -53,7 +55,7 @@ router.route('/planets/name/:name')
     // create planets
     .post(function(req, res) {
       console.log('Creating planet ' + req.params.name);
-      planetsController.createPlanet(res, req.params.name);
+      planetsController.createPlanet(res, req.params.name, []);
     });
 
 router.route('/planets/:id')
@@ -77,17 +79,33 @@ router.route('/planets/:id/owner/:userId')
     })
     // update planets
     .put(function(req, res) {
-      
+
     })
     // create planets
     .post(function(req, res) {
       planetsController.claimPlanet(res, req.params.id, req.params.userId);
     });
 
+router.route('/planets/owner/:userId')
+    // get planets
+    .get(function(req, res) {
+      planetsController.getPlanetByUserId(res, req.params.userId);
+    })
+    // update planets
+    .put(function(req, res) {
+
+    })
+
 router.route('/planets/:id/structures')
     // get planets
     .get(function(req, res) {
-      planetsController.getPlanetById(res, req.params.id);
+      planetsController.getPlanetStructures(res, req.params.id);
+    })
+
+router.route('/planets/:id/structures/:structureType')
+    // get planets
+    .get(function(req, res) {
+      planetsController.getPlanetByUserId(res, req.params.userId);
     })
     // update planets
     .put(function(req, res) {
@@ -95,8 +113,8 @@ router.route('/planets/:id/structures')
     })
     // create planets
     .post(function(req, res) {
-
-    });
+      planetsController.buildStructure(res, req.params.id, req.params.structureType);
+    });          
 
 router.route('/planets')
     // get planets

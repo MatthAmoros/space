@@ -4,8 +4,8 @@ var User = require('../models/user');
 var mongoose   = require('mongoose');
 
 class UsersController {
-  constructor() {
-    this._dbService = new Database();
+  constructor(db) {
+    this._dbService = db;
   }
 
   createUser(res, name, token, options) {

@@ -8,7 +8,7 @@ var Schema       = mongoose.Schema;
 var PlanetStructureSchema   = new Schema({
     _id: Schema.Types.ObjectId, //ID Type supported by MongoDb
     type: [{ type: Schema.Types.ObjectId, ref: 'StructureType' }], //Structure type
-    planet_location_id: [{ type: Schema.Types.ObjectId, ref: 'Planet' }], //Reference to planet.id
+    planet_id: [{ type: Schema.Types.ObjectId, ref: 'Planet' }], //Reference to planet.id
     level: Number
 });
 
