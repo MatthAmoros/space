@@ -39,7 +39,7 @@ class PlanetsController {
     return { space: seed * 2,  energy: seed, defense: 0 };
   }
 
-  getPlanetLocation() {
+  generatePlanetLocation() {
     //To calculte orbite, we get time difference between first release date and now
     let originDate = new Date("5/10/2018");
     let currentDate = new Date();
@@ -48,7 +48,7 @@ class PlanetsController {
     let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
     let position = Math.round(Math.random() * (1 - 8) + 1);
-
+    console.log(position);
     var x,y;
 
     switch (position) {
@@ -85,25 +85,26 @@ class PlanetsController {
         y = -diffDays;
         break;
       default:
+        x = diffDays;
+        y = -diffDays;
+        break;
     }
-
-    console.log({ x: x, y: y});
 
     return { x: x, y: y};
   }
 
   createPlanet(resHttp, name, options) {
-    let location_x = opt(options, 'location_x', 0);
-    let location_y = opt(options, 'location_y', 0);
     let owner = opt(options, 'owner', this._dbService._systemUserId);
 
     let planet = new Planet({
       _id: new mongoose.Types.ObjectId(),
       name: name,
-      location: this.getPlanetLocation(),
+      location: this.generatePlanetLocation(),
       stats: this.generatePlanetStats(),
       owner: owner
     });
+
+    console.log(planet.location);
 
     planet.save().then(function(res) {
       console.log("Planet " + planet.name + " created.");
@@ -117,15 +118,17 @@ class PlanetsController {
   }
 
   /* Getters */
+  //Get all planets
   getPlanets(resHttp) {
     Planet.find((err, planets) => {
-      if(res != undefined) {
+      if(resHttp != undefined) {
         if (err) return resHttp.status(500).send(err);
         return resHttp.status(200).send(planets);
       }
     });
   }
 
+  //Get by Id
   getPlanetById(resHttp, id) {
     Planet.findOne({_id: id}, (err, planet) => {
       if(res != undefined) {
@@ -135,6 +138,7 @@ class PlanetsController {
     });
   }
 
+  //Get by name
   getPlanetByName(res, name) {
     Planet.findOne({name: name}, (err, planet) => {
       if(res != undefined) {
@@ -144,8 +148,25 @@ class PlanetsController {
     });
   }
 
+  //Getter spatials (by location)
   getPlanetByLocation(res, location_x, location_y) {
-    Planet.findOne({location_x: location_x, location_y: location_y}, (err, planets) => {
+    Planet.findOne()
+    .where('location.x').equals(location_x)
+    .where('location.y').equals(location_y)
+    .exec((err, planets) => {
+      if(res != undefined) {
+          if (err) return res.status(500).send(err);
+          res.status(200).send(planets);
+        }
+    });
+  }
+
+  //Getter spatials (by range)
+  getPlanetInRange(res, from, range) {
+    Planet.find()
+    .where('location.x').gt(from.x - range).lt(from.x + range)
+    .where('location.y').gt(from.y - range).lt(from.y + range)
+    .exec((err, planets) => {
       if(res != undefined) {
           if (err) return res.status(500).send(err);
           res.status(200).send(planets);
@@ -162,9 +183,7 @@ class PlanetsController {
     });
   }
 
-  getPlanetInRange(res, from, range) {
-    return null;
-  }
+
 
   getPlanetStructures(resHttp, planetId) {
     PlanetStructure.find({planet_id: mongoose.Types.ObjectId(planetId)}, (err, structures) => {
